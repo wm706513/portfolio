@@ -1,0 +1,62 @@
+{
+    "python": {
+        "name": "Python",
+        "icon": "python.png",
+        "class": "python" 
+    },
+
+    "pandas": {
+        "name": "Pandas",
+        "icon": "pandas_mark_white.svg",
+        "class": ""
+    },
+
+    "flask": {
+        "name": "Flask",
+        "icon": "flask.png",
+        "class": ""
+    },
+
+    "html": {
+        "name": "HTML",
+        "icon": "html.png",
+        "class": ""
+    },
+
+    "css": {
+        "name": "CSS",
+        "icon": "css.png",
+        "class": ""
+    },
+
+    "sklearn": {
+        "name": "Scikit-Learn",
+        "icon": "sklearn.png",
+        "class": "sklearn"
+    },
+
+    "spark": {
+        "name": "Apache Spark",
+        "icon": "spark.png",
+        "class": ""
+    },
+
+    "tableau": {
+        "name": "Tableau",
+        "icon": "tableau.png",
+        "class": ""
+    },
+
+    "power bi": {
+        "name": "Power BI",
+        "icon": "powerbi.svg",
+        "class": ""
+    },
+
+    "excel": {
+        "name": "Excel",
+        "icon": "excel.png",
+        "class": ""
+    }
+
+}

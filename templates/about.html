@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <meta name="description" content="">
+        <meta name="author" content="William McWhorter">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <link href="../static/stylesheets/style.css" rel="stylesheet">
+        <link href="../static/icons/logo2.png" rel="icon">
+    </head>
+
+    <body data-bs-theme="dark">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md navbar-fixed-top bg-body-secondary">
+            <div class="container-fluid">
+                <a class="navbar-brand ps-2" href="{{url_for('index')}}"><img src="../static/icons/logo2.png" height="50" width="auto"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar" aria-controls="navbar" aria-expand="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" style="width:150px" tabindex="-1" id="navbar" aria-labelledby="navbarLabel">
+                    <div class="navbar-nav justify-content-end">
+                        <a class="nav-link" href="{{url_for('index')}}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{url_for('about')}}">About</a>
+                        <a class="nav-link" href="{{url_for('portfolio')}}">Portfolio</a>
+                        <a class="nav-link" href="../static/files/resume.pdf" target="_blank">CV/Resume</a>
+                        <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- About Me -->
+        <div class="container" id="aboutMe">
+            <div class="row mb-2 row-cols-1 position-static">
+                <div class="col">
+                    <!-- Self Photo -->
+                    <img src="../static/images/portrait.jpg" class="rounded-5 me-3" width="30%" height="auto" alt="Picture of myself." style="float:inline-start; max-width:300px;">
+
+                    <!-- About Me Text -->
+                    <p>
+                        I'm a recent graduate from Indiana University where I received my Master of Science in Data Science. 
+                        Prior to this, I attended Ohio University where I received a Bachelor of Science in Applied Mathematics as well as Bachelor of Science in Physics.
+                        During these studies, I got the chance to work with numerous datasets and technologies, providing key skills such as data analysis, data visualization, machine learning, and deep learning. 
+                        I have gotten the opportunity to work with languages such as Python (e.g. Pandas, Seaborn, Matplotlib, Scikit-Learn, and TensorFlow), R, and SQL, as well as data visualization tools such as Tableau and Power BI.
+                    </p>
+
+                    <p>
+                        Working with data is one of my biggest passions. No matter what it is that I'm doing, I'm looking for ways that I can collect data to visualize and analyze so that I can get a deeper understanding of how things work through numbers.
+                        I love applying my data analytics, visualization, and programming skills to my other hobbies, as well.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mb-2 row-cols-1 position-static">
+                <div class="col">
+                    <!-- Dog Photo -->
+                    <img src="../static/images/jaina3.jpg" class="rounded-5 ms-3" width="40%" height="auto" alt="Picture of Jaina with one of her toys." style="float:inline-end; max-width:500px;">
+
+                    <!-- About Me Text -->
+                    <p>
+                        One of my overarching hobbies is learning, and I'm always seeking out new things to expand my knowledge base. 
+                        Whether it's practicing new skills and technologies from top rated courses on Udemy, reading articles focused on astronomy and physics, 
+                        or learning a new world language (my current languages of choice are Swedish, Finnish, and German), I'm constantly trying to find new information to ingest.
+                    </p>
+
+                    <p>
+                        Whenever I do have time where I'm not active learning new skills or working on projects, I have a few other hobbies in which I like to indulge. 
+                        One of these hobbies is playing games with friends, with my main game currently being World of Warcraft.
+                        Other hobbies include going for runs, playing frisbee golf, the occasional TV series binge watch, and playing with my dog Jaina.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Dog Photo Carousel -->
+            <!--
+            <div class="row row-cols-1 mb-2">
+                <div class="col">
+                    <div class="carousel slide" id="jainaCarousel">
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <img src="../static/images/jaina1.jpg" class="d-block" alt="..." height="200px">
+                            </div>
+
+                            <div class="carousel-item">
+                                <img src="../static/images/jaina2.jpg" class="d-block" alt="..." height="200px">
+                            </div>
+
+                            <div class="carousel-item">
+                                <img src="../static/images/jaina3.jpg" class="d-block" alt="..." height="200px">
+                            </div>
+
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#jainaCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#jainaCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+
+        <!-- Contact Bar -->
+        <!--One line, left aligned copyright, centered links-->
+        <!--
+        <footer class="container-fluid fixed-bottom bg-body-secondary">
+            <div class="container-fluid position-fixed start-50">
+        -->
+        <!--Two lines, centered copyright, centered links-->
+        <footer class="container-fluid text-center bg-body-secondary">
+            <div class="container-fluid text-center">
+                <span id="contacts"> <!-- use a span here to shrink the hover area for the hover effects. using the div causes hover to activate over the entire screen width -->
+                    <a href="https://github.com/wm706513" target="_blank"><img class="contact-link" src="../static/icons/github-mark-white.png" alt="Github Invertocat Logo"></a>
+                    <a href="https://www.linkedin.com/in/william-mcwhorter/" target="_blank"><img class="contact-link" src="../static/icons/In-White-128.png" alt="LinkedIn 'in' Logo"></a>
+                    <a href="mailto:wm706513@ohio.edu"><img class="contact-link" src="../static/icons/email-logo.png" alt="Email Icon"></a>
+                </span>
+            </div>
+            <span>© 2025 William McWhorter</span>
+        </footer>
+    </body>
+</html>

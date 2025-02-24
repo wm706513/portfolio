@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Portfolio</title>
+        <meta name="description" content="">
+        <meta name="author" content="William McWhorter">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <link href="../static/stylesheets/style.css" rel="stylesheet">
+        <link href="../static/icons/logo2.png" rel="icon">
+    </head>
+
+    <body data-bs-theme="dark">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md navbar-fixed-top bg-body-secondary">
+            <div class="container-fluid">
+                <a class="navbar-brand ps-2" href="{{url_for('index')}}"><img src="../static/icons/logo2.png" height="50" width="auto"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar" aria-controls="navbar" aria-expand="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" style="width:150px" tabindex="-1" id="navbar" aria-labelledby="navbarLabel">
+                    <div class="navbar-nav justify-content-end">
+                        <a class="nav-link" href="{{url_for('index')}}">Home</a>
+                        <a class="nav-link" href="{{url_for('about')}}">About</a>
+                        <a class="nav-link active" aria-current="page" href="{{url_for('portfolio')}}">Portfolio</a>
+                        <a class="nav-link" href="../static/files/resume.pdf" target="_blank">CV/Resume</a>
+                        <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Filter Buttons -->
+        <div class="container-fluid w-75 text-center" id="filter-buttons">
+            <button class="btn mb-2 btn-outline-secondary active" onclick="filterSelection('all')">Show All</button>
+            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('python')">Python</button>
+            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('front-end')">Front End</button>
+            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('data-vis')">Data Visualization</button>
+            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('machine-learning')">Machine Learning</button>
+            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('big-data')">Big Data</button>
+            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('hypothesis-testing')">Hypothesis Testing</button>
+        </div>
+
+        <!-- Filter Dropdown -->
+        <div class="container-fluid w-75 mb-2" id="filter-dropdown">
+            <select class="form-select w-auto" autocomplete="off">
+                <option selected onclick="filterSelection('all')">All</option>
+                <option onclick="filterSelection('python')">Python</option>
+                <option onclick="filterSelection('front-end')">Front End</option>
+                <option onclick="filterSelection('data-vis')">Data Visualization</option>
+                <option onclick="filterSelection('machine-learning')">Machine Learning</option>
+                <option onclick="filterSelection('big-data')">Big Data</option>
+                <option onclick="filterSelection('hypothesis-testing')">Hypothesis Testing</option>
+            </select>
+        </div>
+
+        <!-- Project Cards -->
+        <div class="container project-card-breakpoints mb-2">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 row-cols-xxxl-4 g-3">
+
+                {% for project in projects %}
+                    <div class="col filterable {{ project['tags'] }}">
+                        <button type="button" class="btn p-0 w-100" data-bs-toggle="modal" data-bs-target="#{{ project['modalID'] }}">
+                            <div class="card project-card">
+                                <div class="card-header">
+                                    <h1>{{ project['name'] }}</h1>
+                                </div>
+                                <img class="card-img-bottom" src="../static/images/{{ project['image'] }}">
+                            </div>
+                        </button>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- Project Modals -->
+        {% for project in projects %}
+            <div class="modal fade modal-lg" id="{{ project['modalID'] }}" tabindex="-1" aria-labelledby="{{ project['modalID'] }}Label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="text-end modal-close">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-11 mx-auto"> <!-- col-3=25%, col-12=100% of row width-->
+                                        <div class="text-center"> <!-- No idea why the text-center class can't be in the surrounding div instead of putting this in its own div-->
+                                            <img src="../static/images/{{ project['image'] }}" width="100%" style="aspect-ratio:1.5/1;">
+                                        </div>
+                                        <h1 class="text-center">{{ project['name'] }}</h1>
+                                        {% set hasEndDate = (project['startDate']!=project['endDate']) %}
+                                        {% set isOngoing = (project['endDate'] is none) %}
+                                        <p class="text-center h2"> {{ project['startDate'] }} {% if hasEndDate %}-{% endif %} {% if hasEndDate and isOngoing %}Ongoing{% elif hasEndDate %}{{ project['endDate'] }}{% endif %} </p>
+                                        <p class="text-center">{{ project['summary'] | safe }}</p>
+
+                                        <hr>
+
+                                        <h2>Description</h2>
+                                        {% for paragraph in project['description'] %}
+                                            <p>{{ paragraph | safe }}</p>
+                                        {% endfor %}
+
+                                        <hr>
+
+                                        <h2>Skills/Technologies</h2>
+                                        {% for skill in project['skills'] %}
+                                            {% set skillData = skills[skill] %}
+                                            <img class="skill {{ skillData['class'] }}" src="../static/icons/{{ skillData['icon'] }}" alt="{{ skillData['name'] }} logo" data-bs-toggle="tooltip" data-bs-placemenet="top" data-bs-custom-class="custom-tooltip" title="{{ skillData['name'] }}">
+                                        {% endfor %}
+
+                                        <hr>
+
+                                        <h2>Links</h2>
+                                        {% set links=project['links'] %}
+                                        {% if links['website'] is not none %} <a class="btn btn-outline-secondary" href="{{ links['website'] }}" target="_blank">Website</a> {% endif %}
+                                        {% if links['github'] is not none %} <a class="btn btn-outline-secondary" href="{{ links['github'] }}" target="_blank">GitHub</a> {% endif %}
+                                        {% if links['report'] is not none %} <a class="btn btn-outline-secondary" href="../static/files/{{ links['report'] }}" target="_blank">Report</a> {% endif %}
+                                        <!-- not actually an error, just a Jinja2 inside Javascript thing -->
+                                        {% if links['file'] is not none %} <a class="btn btn-outline-secondary" href="../static/files/{{ links['file'] }}" target="_blank" onclick="return confirm('Are you sure you want to download &quot;{{ links['file'] }}&quot;?');">File</a> {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+        <!-- Contact Bar -->
+        <!--One line, left aligned copyright, centered links-->
+        <!--
+        <footer class="container-fluid fixed-bottom bg-body-secondary">
+            <div class="container-fluid position-fixed start-50">
+        -->
+        <!--Two lines, centered copyright, centered links-->
+        <footer class="container-fluid text-center bg-body-secondary">
+            <div class="container-fluid text-center">
+                <span id="contacts"> <!-- use a span here to shrink the hover area for the hover effects. using the div causes hover to activate over the entire screen width -->
+                    <a href="https://github.com/wm706513" target="_blank"><img class="contact-link" src="../static/icons/github-mark-white.png" alt="Github Invertocat Logo"></a>
+                    <a href="https://www.linkedin.com/in/william-mcwhorter/" target="_blank"><img class="contact-link" src="../static/icons/In-White-128.png" alt="LinkedIn 'in' Logo"></a>
+                    <a href="mailto:wm706513@ohio.edu"><img class="contact-link" src="../static/icons/email-logo.png" alt="Email Icon"></a>
+                </span>
+            </div>
+            <span>© 2025 William McWhorter</span>
+        </footer>
+
+        <!-- Code for enabling tooltip popups -->
+        <script>
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        </script>
+
+        <!-- Code for allowing filter buttons to work with reloading the page with new data each time -->
+        <script>
+            //Run this to set all elements to have .show initially
+            filterSelection("all")
+
+            //Remove show from all elements with .filterable and then add .show back to the ones selected by the filters
+            function filterSelection(c) {
+                var x, i;
+                x = document.getElementsByClassName("filterable");
+                if (c == "all") c = "";
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                }
+            }
+            
+            //Add .show to the provided element
+            function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+                }
+            }
+            
+            //Remove .show from the provided element
+            function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) {
+                        arr1.splice(arr1.indexOf(arr2[i]), 1);     
+                    }
+                } 
+                element.className = arr1.join(" ");
+            }
+            
+            // Add active class to the current button (highlight it)
+            var btnContainer = document.getElementById("filter-buttons");
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function(){
+                    var current = btnContainer.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+
+            /*
+            var dropdownContainer = document.getElementById("filter-dropdown");
+            var options = dropdownContainer.getElementsByTagName("option");
+            for (var i = 0; i < options.length; i++) {
+                options[i].addEventListener("click", function(){
+                    var current = btnContainer.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }*/
+        </script>
+    </body>
+</html>

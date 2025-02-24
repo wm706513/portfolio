@@ -1,0 +1,299 @@
+[
+    {
+        "id": 1,
+        "modalID": "portfolio",
+        "name": "Portfolio Website",
+        "image": "portfolio.jpg",
+        "startDate": "2025-02",
+        "endDate": null,
+        "summary": "A website to consolidate information about myself and a portfolio with project links",
+        "description": ["Resumes can be limiting with how much information is available to discuss projects completed relevant to job applications. To rememdy this, as well as a way to show more evidence towards the understanding and application of technologies and skills, I put together this portfolio website. There is also extra information about myself, in addition to my resume/CV and portfolio.",
+                        "The portfolio website was put built using Python, HTML, CSS, and Javascript. Python runs the back-end of the website using Flask, whereas the Javascript is used for some front-end interactions including download warnings and project filters. Most CSS comes from Bootstrap, with other custom CSS being added in as needed."],
+        "tags": [
+            "python",
+            "front-end"
+        ],
+        "skills": [
+            "python", 
+            "pandas", 
+            "flask", 
+            "html", 
+            "css"
+        ],
+        "links": {
+            "website": null,
+            "github": null,
+            "report": null,
+            "file": null
+        }
+    },
+
+    {
+        "id": 2,
+        "modalID": "ptrTesting",
+        "name": "PTR Testing",
+        "image": "ptrTesting.png",
+        "startDate": "2025-01",
+        "endDate": "2025-01",
+        "summary": "Scrape, collate, and visualize logs for the World of Warcraft Undermine(d) raid PTR testing",
+        "description": ["Every few months, a new major patch launches to World of Warcraft, and with this patch comes a new raid in which players can participate. To ensure the content is free of bugs and is also an enjoyable experience for players, Blizzard allows players to use the Player Test Realms (PTR) to experience the content before its official release. Part of this testing includes gathering data to balance the various playable specializations between each other for a more enjoyable experience. This Tableau dashboard visualizes data uploaded to the third-party logging serice Warcraft Logs.",
+                        "The reports are retrieved from Warcraft Logs' GraphQL database via their public API. Using this API, every relevant report was collected, and filtered down to the necessary information into a series of CSV files. These CSV files were then utilized in Tableau to visualize performance metrics at various percentile rankings, with filters to choose which fights, metrics, difficulties, and dates to include."],
+        "tags": [
+            "python",
+            "data-vis"
+        ],
+        "skills": [
+            "python",
+            "tableau"
+        ],
+        "links": {
+            "website": "https://public.tableau.com/app/profile/trillithia/viz/PTRTesting/PTRTesting",
+            "github": "https://github.com/wm706513/undermined-ptr-testing",
+            "report": null,
+            "file": null
+        }
+    },
+    
+    {
+        "id": 3,
+        "modalID": "worldDemographics",
+        "name": "World Demographics",
+        "image": "world_demographics.jpg",
+        "startDate": "2025-01",
+        "endDate": "2025-01",
+        "summary": "Recreation of the World Demographics animation presented by Hans Rosling in his TED Talk <i>The Best Stats You've Ever Seen</i> in 2013",
+        "description": ["As part of a TED Talk in 2013, Hans Rosling presented an animation on world demographics. Each country with data collected was represented using a dot colored by its region of inhabitance, and sized based on its population at the Time. These dots were then placed on axes representing life exptancy and fertility rate. Finally, the visualization was animated, with each step of the animation being a year forward in time.",
+                        "This project is a recreation of the aforementioned visualization using the same initial data, but with the data source being updated to include more years than Rosling's animation. The project was done as part of a course on learning Tableau, &quot;Tableau Advanced: Master Tableau in Data Science&quot; by Kirill Eremenko at SuperDataScience, hosted as a top course on Udemy."],
+        "tags": [
+            "data-vis"
+        ],
+        "skills": [
+            "tableau"
+        ],
+        "links": {
+            "website": "https://public.tableau.com/app/profile/william.mcwhorter/viz/WorldDemographicsAnimationRecreation/WorldDemographics",
+            "github": null,
+            "report": null,
+            "file": null
+        }
+    },
+    
+    {
+        "id": 4,
+        "modalID": "dirt",
+        "name": "Dirt Rates",
+        "image": "dirt.jpg",
+        "startDate": "2024-09",
+        "endDate": null,
+        "summary": "Dashboard to analyze the drop rates of knowledge items in World of Warcraft world treasures",
+        "description": ["Professions in World of Warcraft have a progression method called &quot;Knowledge Points&quot;. These knowledge points can be collected from a variety of sources, and one such source involves the player flying around the open world and looting repeatable treasure chests and piles of disturbed dirt. Each instance a player loots has a chance to contain an item that provides knowledge points to one of the professions (limited to crafting professions/not available to gathering professions). A player can collect two such items per week per profession, totalling up to four items per week. This project sought to identify the drop rates of these items and how the rates depended on other factors such as the profession itself.",
+                        "The data for this projected is being manually collected whenever I collect my knowledge points throught the week on all of my available characters. The data is stored in a CSV file detailing the week number, the character's class, the profession to which the knowledge item belonged, the numerical order the items were gathered, and the number of treasures it took to collect that paticular item. An assumption was made that each item dropped independently from one another, by having each treasure roll a chance of an item appearing, and then another roll on which item appears. Following this assumption, the number of treasures needed to find a given drop can be modeled using a geometric distribution. This hypothesis was examined using the data modeled in Tableau by conducting a Chi-Square Goodness of Fit test. Similarly, the data could also be modeled by only looking at the number of items per character per week and using a negative binomial distribution instead. This model was also examined using a Chi-Square Goodness of Fit test. Finally, individual groups could be tested for difference in drop rate by using 2 sample t-tests or ANOVA. All hypothesis testing and goodness of fit testing was done in Excel."],
+        "tags": [
+            "data-vis",
+            "hypothesis-testing"
+        ],
+        "skills": [
+            "excel",
+            "tableau"
+        ],
+        "links": {
+            "website": "https://public.tableau.com/app/profile/trillithia/viz/DirtRates/DirtRatesOrder",
+            "github": null,
+            "report": null,
+            "file": null
+        }
+    },
+    
+    {
+        "id": 5,
+        "modalID": "mavenMarket",
+        "name": "Maven Market",
+        "image": "maven_market.jpg",
+        "startDate": "2024-08",
+        "endDate": "2024-08",
+        "summary": "A Power BI report for a fake grocery store",
+        "description": ["Maven Market is a fictitious grocery store created by Maven Analytics for use in their course &quot;Microsoft Power BI Desktop for Business Intelligence&quot; hosted on Udemy.",
+                        "This report was an independently created report, with only the final display being provided. The report contains details on KPIs such as monthly transactions, profits, and returns, as well as a breakdown of these KPIs by product brand. There is also a locational distribution of sales displayed through a geo-map and a tree map. All visualizations are cross filterable."],
+        "tags": [
+            "data-vis"
+        ],
+        "skills": [
+            "power bi"
+        ],
+        "links": {
+            "website": null,
+            "github": null,
+            "report": null,
+            "file": "Maven Market Report.pbix"
+        }
+    },
+    
+    {
+        "id": 6,
+        "modalID": "adventureWorks", 
+        "name": "Adventure Works",
+        "image": "adventure_works.jpg",
+        "startDate": "2024-08",
+        "endDate": "2024-08",
+        "summary": "A Power BI report for a fake bicycle retailer",
+        "description": ["Adventure Works is a fictitious bicycle retailer created by Maven Analytics for use in their course &quot;Microsoft Power BI Desktop for Business Intelligence&quot; hosted on Udemy.",
+                        "This report was completed alongside the course, rather than independently. The report contains KPIs cards for the revenue, profit, orders, and returns, with breakdowns into each product individually and revenue over time. The report also features an orders by location map, a page for customer details (e.g., orders by income level/occupation and top customers), and the ability to drill through any selected item to view KPIs of individual products in more detail. The report features page navigation buttons, a collapsable bar for filters, and custom within-tooltip visualizations for the product categories."],
+        "tags": [
+            "data-vis"
+        ],
+        "skills": [
+            "power bi"
+        ],
+        "links": {
+            "website": null,
+            "github": null,
+            "report": null,
+            "file": "AdventureWorks Report.pbix"
+        }
+    },
+    
+    {
+        "id": 7,
+        "modalID": "spark",
+        "name": "Distributed Clustering",
+        "image": "spark.png",
+        "startDate": "2024-04",
+        "endDate": "2024-04",
+        "summary": "Distributed implementation and testing of the K-Means++ clustering algorithm",
+        "description": ["A distributed implentation of the K-Means++ clustering algorithm created as part of self-chosen project for the final project of &quot;Management, Access, and Use of Big and Complex Data&quot; at Indiana Unviersity, taught by Dr. Inna Kouper. The project was done without guidance and without referencing previous implementations of distributed K-Means or K-Means++ algorithms. Once implemented, the clustering algorithm was tested using a set of around 2600 images of weather conditions sourced from Kaggle.",
+                        "The K-Means++ implementation was done using PySpark as the language of choice. This implementation also utilized Jetstream2 virtual machines, and a docker container to have access to Jupyter. The custom implementation was done mimicing the Sci-Kit Learn's implementation for non-distributed K-Means. To ensure the distributed K-Means++ algorithm was working correctly, it was operated on the well-known iris flower dataset and compared to the Sci-Kit Learn K-Means++ implementation. Finally, the 2600 weather images were loaded into PySpark RDDs, transformed, and clustered using the custom K-Means++ implementation. The fina results were aggregated into a confusion matrix and analyzed/interpreted."],
+        "tags": [
+            "python",
+            "machine-learning",
+            "big-data"
+        ],
+        "skills": [
+            "python",
+            "pandas",
+            "spark",
+            "sklearn"
+        ],
+        "links": {
+            "website": null,
+            "github": "https://github.com/wimcwho/info-i-535-project",
+            "report": "distributed_clustering.pdf",
+            "file": null
+        }
+    },
+    
+    {
+        "id": 8,
+        "modalID": "professions",
+        "name": "Profession Website",
+        "image": "professions.jpg",
+        "startDate": "2023-07",
+        "endDate": null,
+        "summary": "Website to consolidate World of Warcraft character profession data",
+        "description":  [
+            "Maintaining many professions across many characters within World of Warcraft can make it difficult to keep track of the finer details. By constructing <a href=\"https://trillithia.pythonanywhere.com\" target=\"_blank\">trillithia.pythonanywhere.com</a>, I was able to create a resource that consolidated all of this information into one location that is easily accessible and traverisble. Since the game is also online, the website opens friends to this information so that they can place orders without needing me to be around.",
+            "This website was built using the Flask library in Python to run the backend, as well as HTML files and a mix of custom and Bootstrap CSS. The data is read from a collection of CSV and JSON files, processed using Python to determine which crafters can create which recipes. In the event of multiple crafters knowing a recipe, it works with the data from the crafter who can create the recipe at the highest quality."
+        ],
+        "tags": [
+            "python",
+            "front-end"
+        ],
+        "skills": [
+            "python", 
+            "pandas", 
+            "flask", 
+            "html", 
+            "css"
+        ],
+        "links": {
+            "website": "https://trillithia.pythonanywhere.com",
+            "github": "https://github.com/wm706513/profession-site",
+            "report": null,
+            "file": null
+        }
+    },
+    
+    {
+        "id": 9,
+        "modalID": "recommender",
+        "name": "Recommender System",
+        "image": "recommender.jpg",
+        "startDate": "2023-04",
+        "endDate": "2023-04",
+        "summary": "System to recommend products on Amazon to customers based on reviews",
+        "description": ["This project was done as a final course project for &quot;Data Mining&quot; as Indiana University, taught by Dr. Hasan Kurban. The project sought to utilize the Amazon reviews dataset provided by Jianmo Ni at the University of California San Diego by using collaborative and content-based filtering to provide product recommendations to users on Amazon using their, and everyone else's, reviews.",
+                        "The recommender system was built in Python using the aforementioned dataset, utilizing Sci-Kit Learn for metrics and distance functions. Ultiamtely, the cosine similarity was selected as the distance metric and the recommender system was limited to content-based filtering due to better preformance with these choices. Once built, a website was built to interact with the recommender system. "],
+        "tags": [
+            "python",
+            "front-end",
+            "machine-learning",
+            "big-data"
+        ],
+        "skills": [
+            "python", 
+            "pandas", 
+            "sklearn", 
+            "flask", 
+            "html", 
+            "css"
+        ],
+        "links": {
+            "website": null,
+            "github": null,
+            "report": "recommender_system.pdf",
+            "file": null
+        }
+    },
+    
+    {
+        "id": 10,
+        "modalID": "dsksus",
+        "name": "DSKUS",
+        "image": "dskus.png",
+        "startDate": "2023-03",
+        "endDate": "2023-06",
+        "summary": "Multinational research project to analyze and compare social media content between countries.",
+        "description": ["The Data Science South Korea/US (DSKUS) Global Lab is a cross-national project between Hanyang University in Seoul, DePaul University in Chicago, and Indiana University in Bloomington. The program is funded by the United States Embassy in Seoul via the US State Department, and students across the universities work together to solve data science problems. These projects are submitted to the United States and South Korean governments to be further analyzed and potentially affect policy making decisions. Each group consisted of two students from South Korea and two students from the United States.",
+                        "This particular project was given the topic of &quot;Disinformation campaigns, particularly related to social media use in different countries such as authoritarian states like Russia or China&quot;. From this broad topic, the final project focused on comparing the spread of misinformation on social media between the United States and China amongst the COVID-19 pandemic. Social media posts from Twitter (for the United States) and Weibo (for China) were compared in their post statistics (e.g., word count, account activity, and account age) and in their post content. A labeled dataset indicating whether a post was factual or misinformation was utilized, along with using social media scraper to collect the post statistics from post IDs and content. In addition to post statistics and content, sentiment analysis was used, and various machine learning algorithms through Sci-Kit Learn were used to get the feature importances for all of these features. Finally, an attempt at classifying posts was made, and the results of everything were compared between the two social media platforms."],
+        "tags": [
+            "python",
+            "machine-learning"
+        ],
+        "skills": [
+            "python", 
+            "pandas", 
+            "sklearn"
+        ],
+        "links": {
+            "website": null,
+            "github": null,
+            "report": "dskus.pdf",
+            "file": null
+        }
+    },
+    
+    {
+        "id": 11,
+        "modalID": "bayesian",
+        "name": "Bayesian Data Analysis",
+        "image": "bayesianStats.png",
+        "startDate": "2022-11",
+        "endDate": "2022-12",
+        "summary": "Bayesian analysis of the distribution of Mythic+ keystone drops in World of Warcraft",
+        "description": ["A project done for the &quot;Bayesian Theory and Data Analysis&quot; course at Indiana University, taught by Dr. Daniel Manrique-Vallier. The topic was self-selected and individually completed as a final project for the course. In the game World of Warcraft, there exists a game mode called Mythic+ where players can run dungeons at increasingly higher difficulties with various, weekly changing, affixes. In order to do so, players are given a &quot;Keystone&quot; (&quot;Key&quot; for short) which increases in level every time the group of players completes the dungeon within the allocated timer. The inspiration for this project, was that from week to week, it felt certain weeks were providing a heavy bias towards awarding players keystones for specific dungeons. This project aims to test the hypothesis that the dungeons are given out evenly, rather than having some internal bias based on the affixes.",
+                        "To begin, a dataset was created by surveying a large group of players every week for duration of the project. The dataset included the dungeon the key was assigned, the key level, and the affixes on the key for that week. For simplicity, only the first key a player received each week was examined, as a completed key could not turn into the same dungeon if it was completed, and a non-completed key was guaranteed to be the same dungeon at one level lower. Using this model, the distribution of keystones is a Multinomial model with a probability vector, where the null hypothesis is that each probability in the vector is uniform. The multinomial model was given a Dirichlet prior distribution, resulting in a Dirichlet distribution for the posterior distribution of the probability vector.  The null hypothesis was finally tested using credible intervals, the Bayes factor, and a Chi-Square test. All calculations, visualizations, and sampling methods were performed in Python."],
+        "tags": [
+            "python",
+            "hypothesis-testing"
+        ],
+        "skills": [
+            "python", 
+            "pandas"
+        ],
+        "links": {
+            "website": null,
+            "github": null,
+            "report": "bayesian_stats.pdf",
+            "file": null
+        }
+    }
+]

@@ -1,0 +1,493 @@
+body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    min-height:100vh;
+    padding-bottom: 75px; /*make sure the fotter doesn't overlap the body*/
+}
+
+footer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    bottom: 0;
+}
+
+#aboutMe{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.modal{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.modal h1, .modal h2, .modal p.h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:white;
+}
+
+.bg-image{
+    background-image:url('../images/astronomy.jpg');
+    background-size: 100% calc(100% - 75px); /* stretch/compress to fill the screen, not counting the footer size */
+    background-repeat: no-repeat;
+}
+
+.navbar{
+    margin-bottom: 10px;
+}
+
+
+/* animate the handwave on hover */
+.wave:hover img{
+    animation-name: wave;
+    animation-duration: 1s;
+}
+
+.backbar{
+    background-color: rgba(0,0,0,0.3);
+    max-width: 100vw;
+}
+
+.text-bordered{
+    text-shadow: -2px 2px black,
+                  2px 2px black,
+                  2px -2px black,
+                  -2px -2px black;
+}
+
+@keyframes wave{
+    0% {transform: rotate(0deg)}
+    25% {transform: rotate(45deg)}
+    50% {transform: rotate(0deg)}
+    75% {transform: rotate(45deg)}
+    100% {transform: rotate(0deg)}
+}
+
+.nav-link{
+    border-style: solid;
+    border-color: var(--bs-border-color);
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+}
+
+.nav-link.active{
+    border-style: solid;
+    border-color: var(--bs-border-color-subtle);
+    border-width: 1px;
+    border-radius: 5px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+}
+
+@media screen and (min-width:768px){
+    .nav-link:hover{
+        color:rgb(240, 240, 240);
+    }
+}
+
+.filterable{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.skill{
+    height:30px;
+    width:auto;
+    padding-right:5px;
+    padding-left:5px;
+}
+
+.skill.sklearn{
+    height:25px;
+}
+
+.skill.python{
+    margin-top:3px;
+}
+
+.custom-tooltip{
+    --bs-tooltip-bg: var(--bs-secondary-bg);
+    --bs-tooltip-opacity: 100%;
+    --bs-tooltip-color: white;
+}
+
+.contact-link{
+    height:25px;
+    width:auto;
+    padding-right:10px;
+    padding-left:10px;
+    margin-right:-2px;
+    margin-left:-2px;
+}
+
+#contacts a img{
+    transition:0.3s;
+}
+
+#contacts:hover > a img{
+    opacity:0.2;
+    transition:0.3s;
+}
+
+#contacts a img:hover{
+    opacity: 1;
+    transition:0.3s;
+}
+
+.photo-attribution{
+    font-size:xx-small;
+    position:absolute; 
+    right:0; 
+    bottom:0; 
+    margin-bottom:75px; 
+    margin-right:10px;
+}
+
+footer div{
+    padding-bottom:5px;
+}
+
+.modal-close{
+    padding-right: 10px;
+}
+
+.project-card{
+    opacity: 90%;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.project-card:hover{
+    /*opacity: 20%;*/
+    box-shadow: 0px 0px 0px 1px white; /*same effect as 2px border width, but behaves better with transition*/
+    border-color: white;
+    transition: 0.3s;
+}
+
+.project-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.card-header{
+    color: white;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.card-header h1{
+    margin-bottom: 0px;
+    font-weight: bold;
+    font-size: medium;
+}
+
+/*
+.hover-text{
+    opacity:0%;
+}
+
+.filterable:hover .hover-text{
+    opacity:100%;
+}
+*/
+
+/* Portfolio Filter Selection Conditions */
+@media screen and (max-width:768px){
+    #filter-dropdown{
+        display: block;
+    }
+    #filter-buttons{
+        display: none;
+    }
+}
+
+@media screen and (max-width:768px){
+    .nav-link{
+        padding-left: 15px;
+    }
+}
+
+.project-card{
+    aspect-ratio: 1.5/1; /* attempt to keep a 2560/1440 ratio since most of the pictures follow that already */
+    max-width: 100%; /* don't allow width to go past container width if aspect ratio would cause that */
+}
+
+.contact-icon{
+    width:32px;
+    height:32px;
+}
+
+.contact-card{
+    min-width:300px;
+}
+
+#introduction{
+    margin: 0;
+    font-size: 50px;
+}
+
+#role{
+    margin: 0px;
+    font-size: 31px;
+    margin-top: -10px;
+}
+
+#indexLocation{
+    margin: 0px;
+    margin-bottom: 5px;
+    font-size: 19px;
+}
+
+#waveEmoji{
+    height: 50px;
+    width: auto;
+    margin-top: -13px;
+}
+
+#indexLocationPin{
+    height: 15px;
+    width: 15px;
+    margin-top: -4px;
+}
+
+@media screen and (min-width:576px){ /* SM */
+    .container.project-card-breakpoints{
+        max-width: 576px;
+    }
+
+    #introduction{
+        font-size: 50px;
+    }
+    
+    #role{
+        font-size: 31px;
+        margin-top: -10px;
+    }
+    
+    #indexLocation{
+        font-size: 19px;
+        margin-bottom: 5px;
+    }
+    
+    #waveEmoji{
+        height: 50px;
+        width: auto;
+        margin-top: -13px;
+    }
+    
+    #indexLocationPin{
+        height: 15px;
+        width: 15px;
+        margin-top: -4px;
+    }
+}
+
+@media screen and (min-width:768px){ /* MD */
+    .container.project-card-breakpoints{
+        max-width: 768px;
+    }
+
+    #filter-dropdown{
+        display: none;
+    }
+    #filter-buttons{
+        display: block;
+    }
+
+    #introduction{
+        font-size: 75px;
+    }
+    
+    #role{
+        font-size: 46px;
+        margin-top: -15px;
+    }
+    
+    #indexLocation{
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+    
+    #waveEmoji{
+        height: 75px;
+        width: auto;
+        margin-top: -20px;
+    }
+    
+    #indexLocationPin{
+        height: 23px;
+        width: 23px;
+        margin-top: -5px;
+    }
+}
+
+@media screen and (min-width:992px){ /* LG */
+    .container.project-card-breakpoints{
+        max-width: 992px;
+    }
+
+    #introduction{
+        font-size: 100px;
+    }
+    
+    #role{
+        font-size: 62px;
+        margin-top: -20px;
+    }
+    
+    #indexLocation{
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+    
+    #waveEmoji{
+        height: 100px;
+        width: auto;
+        margin-top: -27px;
+    }
+    
+    #indexLocationPin{
+        height: 30px;
+        width: 30px;
+        margin-top: -7px;
+    }
+}
+
+@media screen and (min-width:1200px){ /* XL */
+    .container.project-card-breakpoints{
+        max-width: 1200px;
+    }
+
+    #introduction{
+        font-size: 100px;
+    }
+    
+    #role{
+        font-size: 62px;
+        margin-top: -20px;
+    }
+    
+    #indexLocation{
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+    
+    #waveEmoji{
+        height: 100px;
+        width: auto;
+        margin-top: -27px;
+    }
+    
+    #indexLocationPin{
+        height: 30px;
+        width: 30px;
+        margin-top: -7px;
+    }
+}
+
+@media screen and (min-width:1400px){ /* XXL */
+    .container.project-card-breakpoints{
+        max-width: 1400px;
+    }
+
+    #introduction{
+        font-size: 150px;
+    }
+    
+    #role{
+        font-size: 93px;
+        margin-top: -30px;
+    }
+    
+    #indexLocation{
+        font-size: 57px;
+        margin-bottom: 15px;
+    }
+    
+    #waveEmoji{
+        height: 150px;
+        width: auto;
+        margin-top: -40px;
+    }
+    
+    #indexLocationPin{
+        height: 45px;
+        width: 45px;
+        margin-top: -10px;
+    }
+}
+
+@media screen and (min-width:1620px){
+    .container.project-card-breakpoints{
+        max-width: 1620px;
+    }
+
+    #introduction{
+        font-size: 150px;
+    }
+    
+    #role{
+        font-size: 93px;
+        margin-top: -30px;
+    }
+    
+    #indexLocation{
+        font-size: 57px;
+        margin-bottom: 15px;
+    }
+    
+    #waveEmoji{
+        height: 150px;
+        width: auto;
+        margin-top: -40px;
+    }
+    
+    #indexLocationPin{
+        height: 45px;
+        width: 45px;
+        margin-top: -10px;
+    }
+}
+
+@media screen and (min-width:1920px){ /* XXXL */
+    .container.project-card-breakpoints{
+        max-width: 1920px;
+    }
+
+    /* custom class to add another row-cols-* breakpoint past bootstrap's xxl */
+    .row-cols-xxxl-4 > * {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    #introduction{
+        font-size: 150px;
+    }
+    
+    #role{
+        font-size: 93px;
+        margin-top: -30px;
+    }
+    
+    #indexLocation{
+        font-size: 57px;
+        margin-bottom: 15px;
+    }
+    
+    #waveEmoji{
+        height: 150px;
+        width: auto;
+        margin-top: -40px;
+    }
+    
+    #indexLocationPin{
+        height: 45px;
+        width: 45px;
+        margin-top: -10px;
+    }
+}
+
+/* can also play around with min-height values for .project-card{height} */
