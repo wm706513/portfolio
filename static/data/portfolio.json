@@ -7,8 +7,8 @@
         "startDate": "2025-02",
         "endDate": null,
         "summary": "A website to consolidate information about myself and a portfolio with project links",
-        "description": ["Resumes can be limiting with how much information is available to discuss projects completed relevant to job applications. To rememdy this, as well as a way to show more evidence towards the understanding and application of technologies and skills, I put together this portfolio website. There is also extra information about myself, in addition to my resume/CV and portfolio.",
-                        "The portfolio website was put built using Python, HTML, CSS, and Javascript. Python runs the back-end of the website using Flask, whereas the Javascript is used for some front-end interactions including download warnings and project filters. Most CSS comes from Bootstrap, with other custom CSS being added in as needed."],
+        "description": ["Resumes can be limiting with how much information is available to discuss projects completed relevant to job applications. To remedy this, as well as a way to show more evidence towards the understanding and application of technologies and skills, I put together this portfolio website. There is also extra information about myself, in addition to my resume/CV and portfolio.",
+                        "The portfolio website was built using Python, HTML, CSS, and Javascript. Python runs the back-end of the website using Flask, whereas the Javascript is used for some front-end interactions including download warnings and project filters. Most CSS comes from Bootstrap, with other custom CSS being added in as needed."],
         "tags": [
             "python",
             "front-end"
@@ -21,8 +21,8 @@
             "css"
         ],
         "links": {
-            "website": null,
-            "github": null,
+            "website": "https://portfolio-trillithia.pythonanywhere.com/",
+            "github": "https://github.com/wm706513/portfolio",
             "report": null,
             "file": null
         }
@@ -36,7 +36,7 @@
         "startDate": "2025-01",
         "endDate": "2025-01",
         "summary": "Scrape, collate, and visualize logs for the World of Warcraft Undermine(d) raid PTR testing",
-        "description": ["Every few months, a new major patch launches to World of Warcraft, and with this patch comes a new raid in which players can participate. To ensure the content is free of bugs and is also an enjoyable experience for players, Blizzard allows players to use the Player Test Realms (PTR) to experience the content before its official release. Part of this testing includes gathering data to balance the various playable specializations between each other for a more enjoyable experience. This Tableau dashboard visualizes data uploaded to the third-party logging serice Warcraft Logs.",
+        "description": ["Every few months, a new major patch launches to World of Warcraft, and with this patch comes a new raid in which players can participate. To ensure the content is free of bugs and is also an enjoyable experience for players, Blizzard allows players to use the Public Test Realms (PTR) to experience the content before its official release. Part of this testing includes gathering data to balance the various playable specializations between each other for a more enjoyable experience. This Tableau dashboard visualizes data uploaded to the third-party logging service Warcraft Logs.",
                         "The reports are retrieved from Warcraft Logs' GraphQL database via their public API. Using this API, every relevant report was collected, and filtered down to the necessary information into a series of CSV files. These CSV files were then utilized in Tableau to visualize performance metrics at various percentile rankings, with filters to choose which fights, metrics, difficulties, and dates to include."],
         "tags": [
             "python",
@@ -61,8 +61,8 @@
         "image": "world_demographics.jpg",
         "startDate": "2025-01",
         "endDate": "2025-01",
-        "summary": "Recreation of the World Demographics animation presented by Hans Rosling in his TED Talk <i>The Best Stats You've Ever Seen</i> in 2013",
-        "description": ["As part of a TED Talk in 2013, Hans Rosling presented an animation on world demographics. Each country with data collected was represented using a dot colored by its region of inhabitance, and sized based on its population at the Time. These dots were then placed on axes representing life exptancy and fertility rate. Finally, the visualization was animated, with each step of the animation being a year forward in time.",
+        "summary": "Recreation of the World Demographics animation presented by Hans Rosling in his TED Talk <a href=\"https://ed.ted.com/lessons/hans-rosling-shows-the-best-stats-you-ve-ever-seen\" target=\"_blank\"><i>The Best Stats You've Ever Seen</i></a> in 2013",
+        "description": ["As part of a TED Talk in 2013, Hans Rosling presented an animation on world demographics. Each country with data collected was represented using a dot colored by its region of inhabitance, and sized based on its population at the time. These dots were then placed on axes representing life expectancy and fertility rate. Finally, the visualization was animated, with each step of the animation being a year forward in time.",
                         "This project is a recreation of the aforementioned visualization using the same initial data, but with the data source being updated to include more years than Rosling's animation. The project was done as part of a course on learning Tableau, &quot;Tableau Advanced: Master Tableau in Data Science&quot; by Kirill Eremenko at SuperDataScience, hosted as a top course on Udemy."],
         "tags": [
             "data-vis"
@@ -86,8 +86,8 @@
         "startDate": "2024-09",
         "endDate": null,
         "summary": "Dashboard to analyze the drop rates of knowledge items in World of Warcraft world treasures",
-        "description": ["Professions in World of Warcraft have a progression method called &quot;Knowledge Points&quot;. These knowledge points can be collected from a variety of sources, and one such source involves the player flying around the open world and looting repeatable treasure chests and piles of disturbed dirt. Each instance a player loots has a chance to contain an item that provides knowledge points to one of the professions (limited to crafting professions/not available to gathering professions). A player can collect two such items per week per profession, totalling up to four items per week. This project sought to identify the drop rates of these items and how the rates depended on other factors such as the profession itself.",
-                        "The data for this projected is being manually collected whenever I collect my knowledge points throught the week on all of my available characters. The data is stored in a CSV file detailing the week number, the character's class, the profession to which the knowledge item belonged, the numerical order the items were gathered, and the number of treasures it took to collect that paticular item. An assumption was made that each item dropped independently from one another, by having each treasure roll a chance of an item appearing, and then another roll on which item appears. Following this assumption, the number of treasures needed to find a given drop can be modeled using a geometric distribution. This hypothesis was examined using the data modeled in Tableau by conducting a Chi-Square Goodness of Fit test. Similarly, the data could also be modeled by only looking at the number of items per character per week and using a negative binomial distribution instead. This model was also examined using a Chi-Square Goodness of Fit test. Finally, individual groups could be tested for difference in drop rate by using 2 sample t-tests or ANOVA. All hypothesis testing and goodness of fit testing was done in Excel."],
+        "description": ["Professions in World of Warcraft have a progression method called &quot;Knowledge Points&quot;. These knowledge points can be gathered from a variety of sources, and one such source involves the player flying around the open world and looting repeatable treasure chests and piles of disturbed dirt. Each instance a player loots has a chance to contain an item that provides knowledge points to one of their learned professions (limited to crafting professions/not available to gathering professions). A player can collect two such items per week per profession, totalling up to four items per week. This project sought to identify the drop rates of these items and how the rates depended on other factors such as the profession itself.",
+                        "The data for this project is being manually recorded whenever I collect my knowledge points through the week on all of my available characters. The data is stored in a CSV file detailing the week number, the character's class, the profession to which the knowledge item belonged, the numerical order the items were gathered, and the number of treasures it took to receive that paticular item. An assumption was made that each item dropped independently from one another, by having each treasure roll a chance of an item appearing, and then another roll on which item appears. Following this assumption, the number of treasures needed to find a given drop can be modeled using a geometric distribution. This hypothesis was examined using the data modeled in Tableau by conducting a Chi-Square Goodness of Fit test. Similarly, the data could also be modeled by only looking at the number of items per character per week and using a negative binomial distribution instead. This model was also examined using a Chi-Square Goodness of Fit test. Finally, individual groups could be tested for difference in drop rate by using 2 sample t-tests or ANOVA. All hypothesis testing and goodness of fit testing was done in Excel."],
         "tags": [
             "data-vis",
             "hypothesis-testing"
@@ -160,8 +160,8 @@
         "startDate": "2024-04",
         "endDate": "2024-04",
         "summary": "Distributed implementation and testing of the K-Means++ clustering algorithm",
-        "description": ["A distributed implentation of the K-Means++ clustering algorithm created as part of self-chosen project for the final project of &quot;Management, Access, and Use of Big and Complex Data&quot; at Indiana Unviersity, taught by Dr. Inna Kouper. The project was done without guidance and without referencing previous implementations of distributed K-Means or K-Means++ algorithms. Once implemented, the clustering algorithm was tested using a set of around 2600 images of weather conditions sourced from Kaggle.",
-                        "The K-Means++ implementation was done using PySpark as the language of choice. This implementation also utilized Jetstream2 virtual machines, and a docker container to have access to Jupyter. The custom implementation was done mimicing the Sci-Kit Learn's implementation for non-distributed K-Means. To ensure the distributed K-Means++ algorithm was working correctly, it was operated on the well-known iris flower dataset and compared to the Sci-Kit Learn K-Means++ implementation. Finally, the 2600 weather images were loaded into PySpark RDDs, transformed, and clustered using the custom K-Means++ implementation. The fina results were aggregated into a confusion matrix and analyzed/interpreted."],
+        "description": ["A distributed implentation of the K-Means++ clustering algorithm created as part of self-chosen project for the final project of &quot;Management, Access, and Use of Big and Complex Data&quot; at Indiana Unviersity, taught by Dr. Inna Kouper. The project was done without guidance and without referencing previous implementations of distributed clustering algorithms. Once implemented, the clustering algorithm was tested using a set of around 2600 images of weather conditions sourced from <a href=\"https://www.kaggle.com/datasets/jehanbhathena/weather-dataset\" target=\"_blank\">Kaggle</a>.",
+                        "The K-Means++ implementation was done using PySpark as my language of choice. This implementation also utilized Jetstream2 virtual machines, and a docker container to have access to Jupyter. The custom implementation was done mimicking the Sci-Kit Learn's implementation for non-distributed K-Means. To ensure the distributed algorithm was working correctly, it was operated on the well-known iris flower dataset and compared to the Sci-Kit Learn in-memory implementation. Finally, the 2600 weather images were loaded into PySpark RDDs, transformed, and clustered using the custom K-Means++ implementation. The final results were aggregated into a confusion matrix and analyzed/interpreted."],
         "tags": [
             "python",
             "machine-learning",
@@ -190,7 +190,7 @@
         "endDate": null,
         "summary": "Website to consolidate World of Warcraft character profession data",
         "description":  [
-            "Maintaining many professions across many characters within World of Warcraft can make it difficult to keep track of the finer details. By constructing <a href=\"https://trillithia.pythonanywhere.com\" target=\"_blank\">trillithia.pythonanywhere.com</a>, I was able to create a resource that consolidated all of this information into one location that is easily accessible and traverisble. Since the game is also online, the website opens friends to this information so that they can place orders without needing me to be around.",
+            "Maintaining many professions across many characters within World of Warcraft can make it difficult to keep track of the finer details. By constructing <a href=\"https://trillithia.pythonanywhere.com\" target=\"_blank\">trillithia.pythonanywhere.com</a>, I was able to create a resource that consolidated all of this information into one location that is easily accessible and traversable. Since the game is also online, the website opens friends to this information so that they can place orders without needing me to be around.",
             "This website was built using the Flask library in Python to run the backend, as well as HTML files and a mix of custom and Bootstrap CSS. The data is read from a collection of CSV and JSON files, processed using Python to determine which crafters can create which recipes. In the event of multiple crafters knowing a recipe, it works with the data from the crafter who can create the recipe at the highest quality."
         ],
         "tags": [
@@ -221,7 +221,7 @@
         "endDate": "2023-04",
         "summary": "System to recommend products on Amazon to customers based on reviews",
         "description": ["This project was done as a final course project for &quot;Data Mining&quot; as Indiana University, taught by Dr. Hasan Kurban. The project sought to utilize the Amazon reviews dataset provided by Jianmo Ni at the University of California San Diego by using collaborative and content-based filtering to provide product recommendations to users on Amazon using their, and everyone else's, reviews.",
-                        "The recommender system was built in Python using the aforementioned dataset, utilizing Sci-Kit Learn for metrics and distance functions. Ultiamtely, the cosine similarity was selected as the distance metric and the recommender system was limited to content-based filtering due to better preformance with these choices. Once built, a website was built to interact with the recommender system. "],
+                        "The recommender system was built in Python using the aforementioned dataset, utilizing Sci-Kit Learn for metrics and distance functions. Ultimately, the cosine similarity was selected as the distance metric and the recommender system was limited to content-based filtering due to better performance with these choices. Once built, a website was built to interact with the recommender system. "],
         "tags": [
             "python",
             "front-end",

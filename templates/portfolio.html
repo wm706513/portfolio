@@ -33,34 +33,37 @@
             </div>
         </nav>
 
-        <!-- Filter Buttons -->
-        <div class="container-fluid w-75 text-center" id="filter-buttons">
-            <button class="btn mb-2 btn-outline-secondary active" onclick="filterSelection('all')">Show All</button>
-            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('python')">Python</button>
-            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('front-end')">Front End</button>
-            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('data-vis')">Data Visualization</button>
-            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('machine-learning')">Machine Learning</button>
-            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('big-data')">Big Data</button>
-            <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('hypothesis-testing')">Hypothesis Testing</button>
-        </div>
-
-        <!-- Filter Dropdown -->
-        <div class="container-fluid w-75 mb-2" id="filter-dropdown">
-            <select class="form-select w-auto" autocomplete="off">
-                <option selected onclick="filterSelection('all')">All</option>
-                <option onclick="filterSelection('python')">Python</option>
-                <option onclick="filterSelection('front-end')">Front End</option>
-                <option onclick="filterSelection('data-vis')">Data Visualization</option>
-                <option onclick="filterSelection('machine-learning')">Machine Learning</option>
-                <option onclick="filterSelection('big-data')">Big Data</option>
-                <option onclick="filterSelection('hypothesis-testing')">Hypothesis Testing</option>
-            </select>
-        </div>
-
         <!-- Project Cards -->
         <div class="container project-card-breakpoints mb-2">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 row-cols-xxxl-4 g-3">
+            <div class="row row-cols-1">
+                <div class="col">
+                    <!-- Filter Buttons -->
+                    <div class="container-fluid w-75 text-center" id="filter-buttons">
+                        <button class="btn mb-2 btn-outline-secondary active" onclick="filterSelection('all')" data-filter="all">Show All</button>
+                        <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('python')" data-filter="python">Python</button>
+                        <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('front-end')" data-filter="front-end">Front End</button>
+                        <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('data-vis')" data-filter="data-vis">Data Visualization</button>
+                        <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('machine-learning')" data-filter="machine-learning">Machine Learning</button>
+                        <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('big-data')" data-filter="big-data">Big Data</button>
+                        <button class="btn mb-2 btn-outline-secondary" onclick="filterSelection('hypothesis-testing')" data-filter="hypothesis-testing">Hypothesis Testing</button>
+                    </div>
 
+                    <!-- Filter Dropdown -->
+                    <div class="container-fluid w-75 mb-2 ms-0 ps-0" id="filter-dropdown">
+                        <select class="form-select w-auto" autocomplete="off">
+                            <option value="all">Show All</option>
+                            <option value="python">Python</option>
+                            <option value="front-end">Front End</option>
+                            <option value="data-vis">Data Visualization</option>
+                            <option value="machine-learning">Machine Learning</option>
+                            <option value="big-data">Big Data</option>
+                            <option value="hypothesis-testing">Hypothesis Testing</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 row-cols-xxxl-4 g-3">
                 {% for project in projects %}
                     <div class="col filterable {{ project['tags'] }}">
                         <button type="button" class="btn p-0 w-100" data-bs-toggle="modal" data-bs-target="#{{ project['modalID'] }}">
@@ -73,7 +76,6 @@
                         </button>
                     </div>
                 {% endfor %}
-
             </div>
         </div>
 
@@ -89,14 +91,15 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-11 mx-auto"> <!-- col-3=25%, col-12=100% of row width-->
-                                        <div class="text-center"> <!-- No idea why the text-center class can't be in the surrounding div instead of putting this in its own div-->
-                                            <img src="../static/images/{{ project['image'] }}" width="100%" style="aspect-ratio:1.5/1;">
-                                        </div>
                                         <h1 class="text-center">{{ project['name'] }}</h1>
                                         {% set hasEndDate = (project['startDate']!=project['endDate']) %}
                                         {% set isOngoing = (project['endDate'] is none) %}
                                         <p class="text-center h2"> {{ project['startDate'] }} {% if hasEndDate %}-{% endif %} {% if hasEndDate and isOngoing %}Ongoing{% elif hasEndDate %}{{ project['endDate'] }}{% endif %} </p>
                                         <p class="text-center">{{ project['summary'] | safe }}</p>
+
+                                        <div class="text-center mb-2"> <!-- No idea why the text-center class can't be in the surrounding div instead of putting this in its own div-->
+                                            <img src="../static/images/{{ project['image'] }}" width="100%" style="aspect-ratio:1.5/1;">
+                                        </div>
 
                                         <hr>
 
@@ -195,27 +198,56 @@
                 element.className = arr1.join(" ");
             }
             
-            // Add active class to the current button (highlight it)
             var btnContainer = document.getElementById("filter-buttons");
             var btns = btnContainer.getElementsByClassName("btn");
+            var filterDropdown = document.getElementById("filter-dropdown"); //get the #filter-dropdown <select> element
+            var filterOptions = filterDropdown.getElementsByTagName("option");
+
+            // Add active class to the current button (highlight it)
             for (var i = 0; i < btns.length; i++) {
                 btns[i].addEventListener("click", function(){
                     var current = btnContainer.getElementsByClassName("active");
-                    current[0].className = current[0].className.replace(" active", "");
+                    if (current.length > 0){
+                        current[0].className = current[0].className.replace(" active", "");
+                    }
                     this.className += " active";
+
+                    // loop over all <option>s in #filter-dropdown to find the one matching the clicked #filter-buttons <button>. Set its selected attribute to true and all other <option>s to have selected=false
+                    // this causes the dropdown to match the buttons when screen sizes shrink to swap from buttons to the dropdown
+                    for (var j=0; j<filterOptions.length; j++){
+                        if (filterOptions[j].value == this.dataset.filter){
+                            filterOptions[j].selected = true;
+                        }
+                        else {
+                            filterOptions[j].selected = false;
+                        }
+                    }
                 });
             }
 
-            /*
-            var dropdownContainer = document.getElementById("filter-dropdown");
-            var options = dropdownContainer.getElementsByTagName("option");
-            for (var i = 0; i < options.length; i++) {
-                options[i].addEventListener("click", function(){
-                    var current = btnContainer.getElementsByClassName("active");
+            // Cause #filter-dropdown selections to also adjust #filter-buttons in the case of screen size changes causing the filter selection type to change
+            filterDropdown.addEventListener("change", (event)=>{
+                filterSelection(event.target.value); //filter project cards based on the selected <option>'s value attribute
+                var index = -1; //btn index where .active is currently at, initialized to -1
+
+                //select the <button> marked with .active, and if one exists remove the .active class
+                var current = btnContainer.getElementsByClassName("active");  
+                if (current.length > 0){
                     current[0].className = current[0].className.replace(" active", "");
-                    this.className += " active";
-                });
-            }*/
+                }
+
+                //loop over all filter buttons to find the <button> matching the <option> selected in #filter-dropdown
+                for (var i=0; i<btns.length; i++){
+                    if (btns[i].dataset.filter==event.target.value){
+                        index = i;
+                    }
+                }
+
+                //if a matching <button> was found, give it the .active class so that it matches the dropwdown as screen sizes change
+                if (index != -1){
+                    btns[index].className += " active";
+                }
+            });
         </script>
     </body>
 </html>
