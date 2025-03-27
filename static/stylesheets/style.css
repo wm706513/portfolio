@@ -183,6 +183,10 @@ footer div{
     font-size: medium;
 }
 
+#name-field{
+    display:none;
+}
+
 /*
 .hover-text{
     opacity:0%;

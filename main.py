@@ -9,6 +9,18 @@ import json
 import pandas as pd
 from email.message import EmailMessage
 
+### DIRECTORY DEFINITIONS ###
+host = 'local'
+#host = 'pythonanywhere'
+
+base_dirs = {
+    'local': '.',
+    'pythonanywhere': './portfolio'
+    }
+
+BASE_DIR = base_dirs.get(host)
+DATA_DIR = f'{BASE_DIR}/static/data'
+
 ### FUNCTIONS ###
 def convert_date_format(date: str) -> str:
     """Expects date as a string in the format 'YYYY-MM'.
@@ -58,6 +70,7 @@ def sendEmail(sender: str, subject:str, message: str) -> None:
 
 ### CLASSES ###
 class ContactForm(FlaskForm):
+    name = StringField(label='Name') #used for basic bot prevention
     email = EmailField(label='Email')
     subject = StringField(label='Subject')
     message = TextAreaField(label='Message')
@@ -70,7 +83,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 ### DATA ###
-with open('./static/data/portfolio.json', 'r') as file:
+with open(f'{DATA_DIR}/portfolio.json', 'r') as file:
     projects = json.load(file)
     projects = sorted(projects, key=lambda proj: (proj['startDate'], proj['endDate']), reverse=True) #sort so most recent start date is first, then most recent end date in event of ties
 
@@ -79,7 +92,7 @@ with open('./static/data/portfolio.json', 'r') as file:
         project['endDate'] = convert_date_format(project['endDate'])
         project['tags'] = ' '.join(project['tags'])
 
-with open('./static/data/skills.json', 'r') as file:
+with open(f'{DATA_DIR}/skills.json', 'r') as file:
     skills = json.load(file)
 
 ### ENDPOINTS ###
@@ -112,12 +125,14 @@ def contact():
     session['error'] = False
 
     if form.validate_on_submit():
-        err = (sendEmail(form.email.data, form.subject.data, form.message.data) is not True) #is False only if no exception occurred, otherwise is True
-        session['form_redirect'] = True
-        if err:
-            session['error'] = True
-        else:
-            session['error'] = False
+        if len(form.name.data) == 0: #only try to send an email if name field is empty (only non-empty if a bot/webcrawler is filling in the form)
+            err = (sendEmail(form.email.data, form.subject.data, form.message.data) is not True) #is False only if no exception occurred, otherwise is True
+            session['form_redirect'] = True
+            if err:
+                session['error'] = True
+            else:
+                session['error'] = False
+
         return redirect(url_for('contact'))  #prevents asking to resubmit every time refresh happens
 
     return render_template('contact.html', form=form, form_redirect=form_redirect, error=error)
